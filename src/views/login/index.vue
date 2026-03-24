@@ -99,7 +99,10 @@ export default {
       this.$store.commit('user/setUserInfo', res.data)
       console.log(res)
       this.$toast('登陆成功')
-      this.$router.push('/')
+
+      // 看地址栏是否有回跳地址
+      const url = this.$route.query.backUrl || '/'
+      this.$router.replace(url)
     }
   },
   destroyed () {
